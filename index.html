@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AimLab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AimLab <h3>Your Own Personal Aim Trainer</h3></h1>
+        </header>
+        <main>
+            <div id="game-area">
+                <div id="target"></div>
+                <div id="countdown"></div>
+            </div>
+            <aside id="sidebar">
+                <h2>Settings</h2>
+                <div class="setting">
+                    <label for="time-limit">Time Limit (s)</label>
+                    <input type="number" id="time-limit" value="30" min="10" max="120">
+                </div>
+                <div class="setting">
+                    <label for="max-misses">Max Misses</label>
+                    <input type="number" id="max-misses" value="5" min="1" max="20">
+                </div>
+                <div class="setting">
+                    <label for="target-size">Target Size (px)</label>
+                    <input type="number" id="target-size" value="50" min="20" max="100">
+                </div>
+                <div class="setting">
+                    <label for="target-duration">Target Duration (ms)</label>
+                    <input type="number" id="target-duration" value="1000" min="500" max="3000" step="100">
+                </div>
+                <div class="setting">
+                    <label for="change-target-color">Change Target Color (Use hex)<span class="info-icon" data-tooltip="Allows you to change the color of the targets.">ⓘ</span></label>
+                    <input type="text" id="change-target-color">
+                </div>
+                <div class="setting">
+                    <label for="keyboard-key">Keyboard Key <span class="info-icon" data-tooltip="Select a key to use for hitting targets while hovering over them rather than clicking.">ⓘ</span></label>
+                    <input type="text" id="keyboard-key" placeholder="Press a key" readonly>
+                </div>
+                <div class="setting">
+                    <label for="step-up-speed">Step Up Speed <span class="info-icon" data-tooltip="Gradually increases the game speed as you hit targets.">ⓘ</span></label>
+                    <input type="checkbox" id="step-up-speed">
+                </div>
+                <button id="start-btn">Start Game</button>
+            </aside>
+        </main>
+        <footer id="stats">
+            <div class="stat">
+                <span class="stat-label">Time</span>
+                <span id="time-remaining">30</span>s
+            </div>
+            <div class="stat">
+                <span class="stat-label">Hits</span>
+                <span id="targets-hit">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Misses</span>
+                <span id="targets-missed">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Accuracy</span>
+                <span id="accuracy">0</span>%
+            </div>
+            <div class="stat">
+                <span class="stat-label">Reaction Speed</span>
+                <span id="reaction-time">0</span>ms
+            </div>
+            <div class="stat">
+                <span class="stat-label">Avg Reaction Speed</span>
+                <span id="avg-reaction-time">0</span>ms
+        </footer>
+    </div>
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <p>Targets Hit: <span id="modal-targets-hit"></span></p>
+            <p>Accuracy: <span id="modal-accuracy"></span>%</p>
+            <p>Avg Reaction Time: <span id="modal-avg-reaction-time"></span>ms</p>
+            <button id="close-modal">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
